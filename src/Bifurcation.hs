@@ -1,4 +1,6 @@
-module Bifurcation () where
+module Bifurcation (
+  fitSet,
+) where
 
 import Classes
 import Components.Ranges.Range
@@ -48,8 +50,8 @@ fitBlock _ _ = error fitError
 
 type Fit = ([RangeBlock], Natural)
 
-fitTiles :: RangeBlockSet -> [RangeTile] -> [RangeBlockSet]
-fitTiles (RBS ors w) orts = map (\(rbs, _) -> RBS rbs w) $ fitaux 0 ors orts
+fitSet :: RangeBlockSet -> [RangeTile] -> [RangeBlockSet]
+fitSet (RBS ors w) orts = map (\(rbs, _) -> RBS rbs w) $ fitaux 0 ors orts
   where
     -- | push right based on Fit and create single list item Fit
     -- | rb' is manual set right bound for X tiles
